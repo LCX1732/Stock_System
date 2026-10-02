@@ -1,0 +1,1101 @@
+ /* =========================================================
+   AL — TABLE DESIGN SYSTEM
+   ระบบบริหารจัดการสต๊อกอะไหล่และต้นทุน
+   ========================================================= */
+
+/* =========================================================
+   1. TABLE VARIABLES
+   ========================================================= */
+
+:root {
+    --al-table-primary: #2F4156;
+    --al-table-secondary: #567C8D;
+    --al-table-light-blue: #C8D9E6;
+    --al-table-warm: #F5EFEB;
+    --al-table-white: #FFFFFF;
+
+    --al-table-text: #243447;
+    --al-table-muted: #718096;
+    --al-table-border: #E2E8ED;
+    --al-table-border-light: #EDF1F4;
+
+    --al-table-hover: #F7FAFC;
+    --al-table-head: #F5F8FA;
+
+    --al-table-success: #2E7D5B;
+    --al-table-warning: #B7791F;
+    --al-table-danger: #C94C4C;
+    --al-table-info: #3B6F8F;
+
+    --al-table-radius: 14px;
+    --al-table-transition: 0.18s ease;
+}
+
+/* =========================================================
+   2. TABLE WRAPPER
+   ========================================================= */
+
+.al-table-card {
+    width: 100%;
+
+    background: var(--al-table-white);
+
+    border: 1px solid var(--al-table-border-light);
+    border-radius: var(--al-table-radius);
+
+    overflow: hidden;
+}
+
+.al-table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    padding: 18px 20px;
+
+    border-bottom: 1px solid var(--al-table-border-light);
+}
+
+.al-table-header-left,
+.al-table-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.al-table-title {
+    margin: 0;
+
+    color: var(--al-table-primary);
+
+    font-size: 16px;
+    font-weight: 750;
+}
+
+.al-table-subtitle {
+    margin: 4px 0 0;
+
+    color: var(--al-table-muted);
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* =========================================================
+   3. RESPONSIVE TABLE CONTAINER
+   ========================================================= */
+
+.al-table-responsive {
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: visible;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+.al-table-responsive::-webkit-scrollbar {
+    height: 7px;
+}
+
+.al-table-responsive::-webkit-scrollbar-track {
+    background: #F3F6F8;
+}
+
+.al-table-responsive::-webkit-scrollbar-thumb {
+    background: #C6D1D8;
+    border-radius: 999px;
+}
+
+.al-table-responsive::-webkit-scrollbar-thumb:hover {
+    background: #AEBCC5;
+}
+
+/* =========================================================
+   4. BASE TABLE
+   ========================================================= */
+
+.al-table {
+    width: 100%;
+
+    margin: 0;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    color: var(--al-table-text);
+
+    font-size: 13px;
+}
+
+.al-table th,
+.al-table td {
+    padding: 13px 15px;
+
+    border-bottom: 1px solid var(--al-table-border-light);
+
+    vertical-align: middle;
+
+    white-space: nowrap;
+}
+
+/* =========================================================
+   5. TABLE HEADER
+   ========================================================= */
+
+.al-table thead th {
+    position: relative;
+
+    background: var(--al-table-head);
+
+    color: var(--al-table-primary);
+
+    font-size: 12px;
+    font-weight: 750;
+
+    line-height: 1.45;
+
+    text-align: left;
+
+    border-bottom: 1px solid var(--al-table-border);
+}
+
+.al-table thead th:first-child {
+    padding-left: 18px;
+}
+
+.al-table thead th:last-child {
+    padding-right: 18px;
+}
+
+/* =========================================================
+   6. TABLE BODY
+   ========================================================= */
+
+.al-table tbody td {
+    background: var(--al-table-white);
+
+    transition:
+        background var(--al-table-transition);
+}
+
+.al-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.al-table tbody tr:hover td {
+    background: var(--al-table-hover);
+}
+
+/* =========================================================
+   7. TABLE STRIPED
+   ========================================================= */
+
+.al-table-striped tbody tr:nth-child(even) td {
+    background: #FBFCFD;
+}
+
+.al-table-striped tbody tr:hover td {
+    background: var(--al-table-hover);
+}
+
+/* =========================================================
+   8. TABLE COMPACT
+   ========================================================= */
+
+.al-table-compact th,
+.al-table-compact td {
+    padding: 9px 12px;
+}
+
+/* =========================================================
+   9. TABLE LARGE
+   ========================================================= */
+
+.al-table-lg th,
+.al-table-lg td {
+    padding: 16px 18px;
+}
+
+/* =========================================================
+   10. ALIGNMENT
+   ========================================================= */
+
+.al-table .text-start {
+    text-align: left;
+}
+
+.al-table .text-center {
+    text-align: center;
+}
+
+.al-table .text-end {
+    text-align: right;
+}
+
+.al-table .number {
+    text-align: right;
+
+    font-variant-numeric: tabular-nums;
+}
+
+.al-table .date {
+    white-space: nowrap;
+
+    font-variant-numeric: tabular-nums;
+
+    color: var(--al-table-muted);
+}
+
+/* =========================================================
+   11. TABLE ID / NUMBER
+   ========================================================= */
+
+.al-table-index {
+    width: 55px;
+
+    color: var(--al-table-muted);
+
+    font-size: 12px;
+
+    text-align: center;
+}
+
+.al-table-code {
+    color: var(--al-table-primary);
+
+    font-family:
+        "Cascadia Code",
+        "Consolas",
+        monospace;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* =========================================================
+   12. PRIMARY CELL
+   ========================================================= */
+
+.al-table-primary {
+    color: var(--al-table-primary);
+
+    font-weight: 700;
+}
+
+.al-table-secondary {
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--al-table-muted);
+
+    font-size: 11px;
+}
+
+.al-table-description {
+    max-width: 360px;
+
+    overflow: hidden;
+
+    color: var(--al-table-text);
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+/* =========================================================
+   13. PART CELL
+   ========================================================= */
+
+.al-table-part {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+}
+
+.al-table-part-icon {
+    width: 36px;
+    height: 36px;
+
+    flex: 0 0 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: var(--al-table-light-blue);
+
+    color: var(--al-table-primary);
+
+    font-size: 15px;
+}
+
+.al-table-part-info {
+    min-width: 0;
+}
+
+.al-table-part-name {
+    overflow: hidden;
+
+    color: var(--al-table-primary);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    text-overflow: ellipsis;
+}
+
+.al-table-part-code {
+    margin-top: 2px;
+
+    color: var(--al-table-muted);
+
+    font-family:
+        "Cascadia Code",
+        "Consolas",
+        monospace;
+
+    font-size: 11px;
+}
+
+/* =========================================================
+   14. STATUS
+   ========================================================= */
+
+.al-table-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    min-height: 26px;
+
+    padding: 4px 9px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.al-table-status::before {
+    content: "";
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: currentColor;
+}
+
+.al-table-status-active {
+    background: #EAF7F0;
+    color: var(--al-table-success);
+}
+
+.al-table-status-inactive {
+    background: #F1F3F5;
+    color: #7B8794;
+}
+
+.al-table-status-warning {
+    background: #FFF7E6;
+    color: var(--al-table-warning);
+}
+
+.al-table-status-danger {
+    background: #FFF0F0;
+    color: var(--al-table-danger);
+}
+
+.al-table-status-info {
+    background: #EDF6FA;
+    color: var(--al-table-info);
+}
+
+/* =========================================================
+   15. STOCK STATUS
+   ========================================================= */
+
+.al-stock-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.al-stock-status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+}
+
+.al-stock-status-normal {
+    color: var(--al-table-success);
+}
+
+.al-stock-status-normal .al-stock-status-dot {
+    background: var(--al-table-success);
+}
+
+.al-stock-status-warning {
+    color: var(--al-table-warning);
+}
+
+.al-stock-status-warning .al-stock-status-dot {
+    background: var(--al-table-warning);
+}
+
+.al-stock-status-danger {
+    color: var(--al-table-danger);
+}
+
+.al-stock-status-danger .al-stock-status-dot {
+    background: var(--al-table-danger);
+}
+
+/* =========================================================
+   16. MOVEMENT TYPE
+   ========================================================= */
+
+.al-movement {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.al-movement-in {
+    color: var(--al-table-success);
+}
+
+.al-movement-out {
+    color: var(--al-table-danger);
+}
+
+.al-movement-adjust {
+    color: var(--al-table-warning);
+}
+
+/* =========================================================
+   17. QUANTITY
+   ========================================================= */
+
+.al-quantity {
+    color: var(--al-table-primary);
+
+    font-size: 13px;
+    font-weight: 750;
+
+    font-variant-numeric: tabular-nums;
+}
+
+.al-quantity-in {
+    color: var(--al-table-success);
+}
+
+.al-quantity-out {
+    color: var(--al-table-danger);
+}
+
+/* =========================================================
+   18. CURRENCY
+   ========================================================= */
+
+.al-money {
+    color: var(--al-table-primary);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    font-variant-numeric: tabular-nums;
+
+    text-align: right;
+}
+
+.al-money-muted {
+    color: var(--al-table-muted);
+
+    font-weight: 600;
+}
+
+.al-money-positive {
+    color: var(--al-table-success);
+}
+
+.al-money-negative {
+    color: var(--al-table-danger);
+}
+
+/* =========================================================
+   19. ACTIONS
+   ========================================================= */
+
+.al-table-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 5px;
+}
+
+.al-table-action {
+    width: 34px;
+    height: 34px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: var(--al-table-muted);
+
+    font-size: 14px;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        background var(--al-table-transition),
+        border-color var(--al-table-transition),
+        color var(--al-table-transition);
+}
+
+.al-table-action:hover {
+    background: #F1F5F7;
+
+    border-color: var(--al-table-border);
+
+    color: var(--al-table-primary);
+}
+
+.al-table-action.view:hover {
+    color: var(--al-table-info);
+}
+
+.al-table-action.edit:hover {
+    color: var(--al-table-secondary);
+}
+
+.al-table-action.delete:hover {
+    color: var(--al-table-danger);
+}
+
+.al-table-action.success:hover {
+    color: var(--al-table-success);
+}
+
+/* =========================================================
+   20. CHECKBOX
+   ========================================================= */
+
+.al-table-check {
+    width: 42px;
+
+    text-align: center;
+}
+
+.al-table-check input {
+    width: 16px;
+    height: 16px;
+
+    margin: 0;
+
+    accent-color: var(--al-table-primary);
+
+    cursor: pointer;
+}
+
+/* =========================================================
+   21. STICKY HEADER
+   ========================================================= */
+
+.al-table-sticky thead th {
+    position: sticky;
+    top: 0;
+
+    z-index: 5;
+}
+
+.al-table-sticky {
+    border-collapse: separate;
+}
+
+/* =========================================================
+   22. STICKY FIRST COLUMN
+   ========================================================= */
+
+.al-table-sticky-first th:first-child,
+.al-table-sticky-first td:first-child {
+    position: sticky;
+    left: 0;
+
+    z-index: 2;
+
+    background: var(--al-table-white);
+}
+
+.al-table-sticky-first thead th:first-child {
+    z-index: 7;
+    background: var(--al-table-head);
+}
+
+.al-table-sticky-first tbody tr:hover td:first-child {
+    background: var(--al-table-hover);
+}
+
+/* =========================================================
+   23. TOTAL / SUMMARY ROW
+   ========================================================= */
+
+.al-table-total td {
+    background: #F8FAFB !important;
+
+    color: var(--al-table-primary);
+
+    font-weight: 750;
+
+    border-top: 1px solid var(--al-table-border);
+}
+
+.al-table-total td:first-child {
+    border-radius: 0 0 0 10px;
+}
+
+.al-table-total td:last-child {
+    border-radius: 0 0 10px 0;
+}
+
+/* =========================================================
+   24. HIGHLIGHT ROW
+   ========================================================= */
+
+.al-table-row-highlight td {
+    background: #F5F9FB !important;
+}
+
+.al-table-row-warning td {
+    background: #FFFBF2 !important;
+}
+
+.al-table-row-danger td {
+    background: #FFF7F7 !important;
+}
+
+.al-table-row-success td {
+    background: #F5FBF7 !important;
+}
+
+/* =========================================================
+   25. EMPTY STATE
+   ========================================================= */
+
+.al-table-empty {
+    padding: 55px 20px !important;
+
+    text-align: center;
+
+    color: var(--al-table-muted);
+
+    border-bottom: 0 !important;
+}
+
+.al-table-empty-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 14px;
+
+    border-radius: 50%;
+
+    background: #F2F5F7;
+
+    color: var(--al-table-secondary);
+
+    font-size: 23px;
+}
+
+.al-table-empty-title {
+    margin-bottom: 5px;
+
+    color: var(--al-table-primary);
+
+    font-size: 14px;
+    font-weight: 750;
+}
+
+.al-table-empty-text {
+    max-width: 400px;
+
+    margin: 0 auto;
+
+    color: var(--al-table-muted);
+
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   26. LOADING STATE
+   ========================================================= */
+
+.al-table-loading {
+    padding: 45px 20px !important;
+
+    text-align: center;
+}
+
+.al-table-loading-spinner {
+    width: 30px;
+    height: 30px;
+
+    margin: 0 auto 12px;
+
+    border: 3px solid #DCE5EA;
+    border-top-color: var(--al-table-secondary);
+
+    border-radius: 50%;
+
+    animation: alTableSpin 0.8s linear infinite;
+}
+
+.al-table-loading-text {
+    color: var(--al-table-muted);
+
+    font-size: 12px;
+}
+
+@keyframes alTableSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================================================
+   27. TABLE FOOTER
+   ========================================================= */
+
+.al-table-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    padding: 14px 18px;
+
+    border-top: 1px solid var(--al-table-border-light);
+
+    background: #FBFCFD;
+}
+
+.al-table-summary {
+    color: var(--al-table-muted);
+
+    font-size: 12px;
+}
+
+.al-table-summary strong {
+    color: var(--al-table-primary);
+    font-weight: 750;
+}
+
+/* =========================================================
+   28. PAGE SIZE
+   ========================================================= */
+
+.al-table-page-size {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: var(--al-table-muted);
+
+    font-size: 12px;
+}
+
+.al-table-page-size select {
+    min-height: 34px;
+
+    padding: 5px 28px 5px 9px;
+
+    border: 1px solid var(--al-table-border);
+    border-radius: 8px;
+
+    background: var(--al-table-white);
+
+    color: var(--al-table-primary);
+
+    font-size: 12px;
+
+    outline: none;
+}
+
+.al-table-page-size select:focus {
+    border-color: var(--al-table-secondary);
+
+    box-shadow:
+        0 0 0 3px rgba(86, 124, 141, 0.10);
+}
+
+/* =========================================================
+   29. PAGINATION
+   ========================================================= */
+
+.al-table-pagination {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+}
+
+.al-table-pagination a,
+.al-table-pagination button,
+.al-table-pagination span {
+    min-width: 34px;
+    height: 34px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 9px;
+
+    border: 1px solid var(--al-table-border);
+    border-radius: 8px;
+
+    background: var(--al-table-white);
+
+    color: var(--al-table-primary);
+
+    font-size: 12px;
+    font-weight: 650;
+
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+.al-table-pagination a:hover,
+.al-table-pagination button:hover {
+    background: #F4F7F9;
+
+    border-color: #BFCBD3;
+}
+
+.al-table-pagination .active {
+    background: var(--al-table-primary);
+
+    border-color: var(--al-table-primary);
+
+    color: var(--al-table-white);
+}
+
+.al-table-pagination .disabled {
+    opacity: 0.45;
+
+    cursor: not-allowed;
+
+    pointer-events: none;
+}
+
+/* =========================================================
+   30. SORTABLE HEADER
+   ========================================================= */
+
+.al-table-sort {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    color: inherit;
+
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+.al-table-sort-icon {
+    color: #9AA7B2;
+
+    font-size: 11px;
+}
+
+.al-table-sort:hover {
+    color: var(--al-table-secondary);
+}
+
+.al-table-sort.active {
+    color: var(--al-table-primary);
+}
+
+.al-table-sort.active .al-table-sort-icon {
+    color: var(--al-table-secondary);
+}
+
+/* =========================================================
+   31. FILTER TAG
+   ========================================================= */
+
+.al-table-filter-tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: 12px;
+}
+
+.al-table-filter-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    min-height: 27px;
+
+    padding: 4px 9px;
+
+    border: 1px solid var(--al-table-border);
+
+    border-radius: 999px;
+
+    background: #F8FAFB;
+
+    color: var(--al-table-muted);
+
+    font-size: 11px;
+}
+
+.al-table-filter-tag button {
+    width: 16px;
+    height: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color: var(--al-table-muted);
+
+    cursor: pointer;
+}
+
+.al-table-filter-tag button:hover {
+    color: var(--al-table-danger);
+}
+
+/* =========================================================
+   32. BOOTSTRAP TABLE COMPATIBILITY
+   ========================================================= */
+
+.table.al-table {
+    --bs-table-bg: transparent;
+    --bs-table-color: var(--al-table-text);
+    --bs-table-border-color: var(--al-table-border-light);
+
+    margin-bottom: 0;
+}
+
+.table.al-table > :not(caption) > * > * {
+    padding: 13px 15px;
+}
+
+/* =========================================================
+   33. RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 992px) {
+
+    .al-table-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .al-table-header-left,
+    .al-table-header-right {
+        width: 100%;
+    }
+
+    .al-table-header-right {
+        justify-content: flex-start;
+    }
+
+    .al-table-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .al-table {
+        min-width: 760px;
+    }
+
+    .al-table-card {
+        border-radius: 12px;
+    }
+
+    .al-table-header {
+        padding: 16px;
+    }
+
+    .al-table-footer {
+        padding: 14px 16px;
+    }
+
+    .al-table-pagination {
+        width: 100%;
+
+        overflow-x: auto;
+
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .al-table-header-right {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .al-table-header-right > * {
+        width: 100%;
+    }
+
+    .al-table-page-size {
+        justify-content: space-between;
+        width: 100%;
+    }
+}

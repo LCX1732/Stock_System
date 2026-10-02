@@ -1,0 +1,643 @@
+/* =========================================================
+   AL INVENTORY SYSTEM
+   RESPONSIVE.CSS
+   ---------------------------------------------------------
+   Responsive layout / mobile / tablet / laptop
+   ไม่ควรใส่ business logic หรือ JS behavior ในไฟล์นี้
+   ========================================================= */
+
+
+/* =========================================================
+   01. LARGE DESKTOP
+   ========================================================= */
+
+@media (max-width: 1600px) {
+
+    .al-content-inner {
+        max-width: 100%;
+    }
+
+    .al-page-header {
+        gap: 16px;
+    }
+
+    .al-page-header-actions {
+        flex-wrap: wrap;
+    }
+}
+
+
+/* =========================================================
+   02. DESKTOP / LAPTOP
+   ========================================================= */
+
+@media (max-width: 1400px) {
+
+    .al-content {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .al-kpi {
+        padding: 18px;
+    }
+
+    .al-kpi-value {
+        font-size: 25px;
+    }
+
+    .al-card-body {
+        padding: 18px;
+    }
+}
+
+
+/* =========================================================
+   03. SMALL LAPTOP
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+    .al-sidebar {
+        width: 240px;
+        min-width: 240px;
+    }
+
+    .al-main-wrapper {
+        width: calc(100% - 240px);
+        margin-left: 240px;
+    }
+
+    .al-main-wrapper > .al-page-header,
+    .al-main-wrapper > .al-header,
+    .al-main-wrapper > .app-header,
+    .al-main-wrapper > .main-header,
+    .al-main-wrapper > .top-header,
+    .al-main-wrapper > .topbar {
+        left: 240px;
+    }
+
+    .al-content {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .al-page-header-title {
+        font-size: 27px;
+    }
+
+    .al-toolbar {
+        align-items: stretch;
+    }
+
+    .al-toolbar-left,
+    .al-toolbar-right {
+        flex-wrap: wrap;
+    }
+
+    .al-search {
+        min-width: 200px;
+    }
+
+    .al-table-wrapper {
+        overflow-x: auto;
+    }
+}
+
+
+/* =========================================================
+   04. TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+
+    :root {
+        --al-header-height: 72px;
+    }
+
+    /* ---------- Main ---------- */
+
+    .al-main-wrapper {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .al-main-wrapper > .al-page-header,
+    .al-main-wrapper > .al-header,
+    .al-main-wrapper > .app-header,
+    .al-main-wrapper > .main-header,
+    .al-main-wrapper > .top-header,
+    .al-main-wrapper > .topbar {
+        left: 0;
+        width: 100%;
+    }
+
+    .al-main {
+        width: 100%;
+        padding-top: var(--al-header-height);
+    }
+
+    .al-content {
+        width: 100%;
+        padding: 22px 18px;
+    }
+
+    /* ---------- Sidebar ---------- */
+
+    .al-sidebar {
+        width: min(320px, 86vw);
+        min-width: min(320px, 86vw);
+        transform: translateX(-105%);
+    }
+
+    body.sidebar-open .al-sidebar,
+    .al-sidebar.is-open {
+        transform: translateX(0);
+    }
+
+    /* ---------- Page Header ---------- */
+
+    .al-page-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .al-page-header-copy {
+        width: 100%;
+    }
+
+    .al-page-header-actions {
+        width: 100%;
+        align-items: stretch;
+    }
+
+    /* ---------- Toolbar ---------- */
+
+    .al-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .al-toolbar-left,
+    .al-toolbar-right {
+        width: 100%;
+    }
+
+    .al-search {
+        width: 100%;
+        min-width: 0;
+    }
+
+    /* ---------- Cards ---------- */
+
+    .al-card-header {
+        padding: 15px 16px;
+    }
+
+    .al-card-body {
+        padding: 16px;
+    }
+
+    /* ---------- KPI ---------- */
+
+    .al-kpi {
+        padding: 17px;
+    }
+
+    .al-kpi-value {
+        font-size: 24px;
+    }
+
+    /* ---------- Tables ---------- */
+
+    .al-table-wrapper {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .al-table {
+        min-width: 680px;
+    }
+
+    /* ---------- Forms ---------- */
+
+    .al-form-actions {
+        flex-wrap: wrap;
+    }
+
+    .al-form-section {
+        padding: 17px;
+    }
+
+    /* ---------- Quick Action ---------- */
+
+    .al-quick-action {
+        min-height: 52px;
+    }
+}
+
+
+/* =========================================================
+   05. MOBILE
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+
+    :root {
+        --al-header-height: 68px;
+    }
+
+    body {
+        font-size: 13px;
+    }
+
+    /* ---------- Main ---------- */
+
+    .al-content {
+        padding: 18px 15px;
+    }
+
+    .al-page {
+        min-width: 0;
+        width: 100%;
+    }
+
+    /* ---------- Header ---------- */
+
+    .al-page-header {
+        margin-bottom: 18px;
+        gap: 12px;
+    }
+
+    .al-page-header-title {
+        font-size: 22px;
+        line-height: 1.25;
+    }
+
+    .al-page-header-description {
+        max-width: 100%;
+        font-size: 12px;
+    }
+
+    .al-page-header-actions {
+        display: grid;
+        grid-template-columns: repeat(
+            auto-fit,
+            minmax(120px, 1fr)
+        );
+        width: 100%;
+        gap: 7px;
+    }
+
+    .al-page-header-actions .al-btn,
+    .al-page-header-actions .btn {
+        width: 100%;
+    }
+
+    /* ---------- Toolbar ---------- */
+
+    .al-toolbar {
+        margin-bottom: 14px;
+        gap: 10px;
+    }
+
+    .al-toolbar-left,
+    .al-toolbar-right {
+        display: grid;
+        grid-template-columns: repeat(
+            auto-fit,
+            minmax(120px, 1fr)
+        );
+        width: 100%;
+    }
+
+    .al-toolbar .al-btn,
+    .al-toolbar .btn {
+        width: 100%;
+    }
+
+    /* ---------- Cards ---------- */
+
+    .al-card {
+        border-radius: 13px;
+    }
+
+    .al-card-header {
+        padding: 13px 14px;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .al-card-body {
+        padding: 15px;
+    }
+
+    .al-card-footer {
+        padding: 12px 14px;
+    }
+
+    .al-card-title {
+        font-size: 14px;
+    }
+
+    /* ---------- KPI ---------- */
+
+    .al-kpi {
+        padding: 16px;
+        border-radius: 13px;
+    }
+
+    .al-kpi-value {
+        font-size: 22px;
+    }
+
+    .al-kpi-label {
+        font-size: 10px;
+    }
+
+    /* ---------- Forms ---------- */
+
+    .al-form-group {
+        margin-bottom: 15px;
+    }
+
+    .al-form-section {
+        padding: 15px;
+        border-radius: 12px;
+    }
+
+    .al-form-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        gap: 7px;
+    }
+
+    .al-form-actions .btn,
+    .al-form-actions .al-btn {
+        width: 100%;
+    }
+
+    .form-control,
+    .form-select {
+        min-height: 44px;
+    }
+
+    /* ---------- Tables ---------- */
+
+    .al-table-wrapper {
+        border-radius: 12px;
+    }
+
+    .al-table {
+        min-width: 680px;
+    }
+
+    /* ---------- Search ---------- */
+
+    .al-search {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .al-form-search {
+        width: 100%;
+    }
+
+    /* ---------- Summary ---------- */
+
+    .al-summary {
+        padding: 15px;
+    }
+
+    .al-summary-row {
+        gap: 12px;
+    }
+
+    /* ---------- Quick Actions ---------- */
+
+    .al-quick-action {
+        padding: 12px;
+        gap: 10px;
+    }
+
+    /* ---------- Pagination ---------- */
+
+    .al-pagination {
+        justify-content: center;
+    }
+}
+
+
+/* =========================================================
+   06. SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 576px) {
+
+    .al-content {
+        padding: 16px 12px;
+    }
+
+    .al-page-header-title {
+        font-size: 20px;
+    }
+
+    .al-page-header-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .al-toolbar-left,
+    .al-toolbar-right {
+        grid-template-columns: 1fr;
+    }
+
+    .al-toolbar .al-btn,
+    .al-toolbar .btn {
+        width: 100%;
+    }
+
+    .al-card-header {
+        padding: 12px 13px;
+    }
+
+    .al-card-body {
+        padding: 13px;
+    }
+
+    .al-kpi {
+        padding: 14px;
+    }
+
+    .al-kpi-value {
+        font-size: 21px;
+    }
+
+    .al-form-section {
+        padding: 13px;
+    }
+
+    .al-summary {
+        padding: 13px;
+    }
+
+    .al-summary-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3px;
+    }
+
+    .al-table {
+        min-width: 620px;
+    }
+
+    .al-empty {
+        padding: 42px 16px;
+    }
+}
+
+
+/* =========================================================
+   07. VERY SMALL SCREEN
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .al-content {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .al-page-header-title {
+        font-size: 19px;
+    }
+
+    .al-page-header-description {
+        font-size: 11px;
+    }
+
+    .al-card {
+        border-radius: 11px;
+    }
+
+    .al-card-header {
+        padding: 11px 12px;
+    }
+
+    .al-card-body {
+        padding: 12px;
+    }
+
+    .al-kpi {
+        padding: 13px;
+        border-radius: 11px;
+    }
+
+    .al-kpi-value {
+        font-size: 20px;
+    }
+
+    .al-btn {
+        min-height: 38px;
+    }
+
+    .btn {
+        min-height: 38px;
+    }
+
+    .al-table {
+        min-width: 600px;
+    }
+}
+
+
+/* =========================================================
+   08. LANDSCAPE MOBILE
+   ========================================================= */
+
+@media (max-width: 767.98px) and (orientation: landscape) {
+
+    .al-content {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .al-page-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .al-page-header-actions {
+        width: auto;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .al-page-header-actions .al-btn,
+    .al-page-header-actions .btn {
+        width: auto;
+    }
+}
+
+
+/* =========================================================
+   09. ACCESSIBILITY / REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+
+/* =========================================================
+   10. PRINT
+   ========================================================= */
+
+@media print {
+
+    .al-sidebar,
+    .al-main-wrapper > .al-page-header,
+    .al-header,
+    .app-header,
+    .main-header,
+    .top-header,
+    .topbar {
+        display: none !important;
+    }
+
+    .al-main-wrapper {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+
+    .al-main {
+        padding-top: 0 !important;
+    }
+
+    .al-content {
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
+    .al-card,
+    .al-kpi,
+    .al-summary {
+        box-shadow: none !important;
+    }
+
+    .al-table-wrapper {
+        overflow: visible !important;
+        border: 0 !important;
+    }
+}

@@ -1,0 +1,2297 @@
+/* =========================================================
+   AL INVENTORY SYSTEM
+   GLOBAL DESIGN SYSTEM
+   ========================================================= */
+
+/* =========================================================
+   01. ROOT / DESIGN TOKENS
+   ========================================================= */
+
+:root {
+
+    /* ---------- Brand ---------- */
+
+    --al-primary: #2F4156;
+    --al-primary-soft: #EAF0F4;
+    --al-primary-hover: #26374A;
+
+    --al-secondary: #567C8D;
+    --al-secondary-soft: #EAF1F4;
+    --al-secondary-hover: #496B7A;
+
+    --al-accent: #C8D9E6;
+    --al-accent-soft: #EDF4F8;
+
+    --al-warm: #F5EFEB;
+    --al-warm-soft: #FAF7F5;
+
+
+    /* ---------- Surface ---------- */
+
+    --al-white: #FFFFFF;
+    --al-surface: #FFFFFF;
+    --al-surface-soft: #F8FAFB;
+    --al-surface-muted: #F3F6F8;
+
+    --al-body-bg: #F6F8FA;
+
+
+    /* ---------- Text ---------- */
+
+    --al-text: #2F4156;
+    --al-text-secondary: #567C8D;
+    --al-text-muted: #7D8D9B;
+    --al-text-light: #A0ADB8;
+    --al-text-inverse: #FFFFFF;
+
+
+    /* ---------- Border ---------- */
+
+    --al-border: #E3E9EE;
+    --al-border-light: #EDF1F4;
+    --al-border-dark: #D3DCE3;
+
+
+    /* ---------- Status ---------- */
+
+    --al-success: #4F946F;
+    --al-success-soft: #EDF7F1;
+
+    --al-warning: #C48A43;
+    --al-warning-soft: #FCF5EA;
+
+    --al-danger: #B85C5C;
+    --al-danger-soft: #FBEFEF;
+
+    --al-info: #5685A0;
+    --al-info-soft: #EDF5F9;
+
+
+    /* ---------- Shadows ---------- */
+
+    --al-shadow-xs:
+        0 1px 2px rgba(47, 65, 86, .04);
+
+    --al-shadow-sm:
+        0 4px 14px rgba(47, 65, 86, .06);
+
+    --al-shadow-md:
+        0 10px 28px rgba(47, 65, 86, .08);
+
+    --al-shadow-lg:
+        0 18px 45px rgba(47, 65, 86, .11);
+
+
+    /* ---------- Radius ---------- */
+
+    --al-radius-sm: 8px;
+    --al-radius-md: 11px;
+    --al-radius-lg: 15px;
+    --al-radius-xl: 20px;
+    --al-radius-pill: 999px;
+
+
+    /* ---------- Spacing ---------- */
+
+    --al-space-1: 4px;
+    --al-space-2: 8px;
+    --al-space-3: 12px;
+    --al-space-4: 16px;
+    --al-space-5: 20px;
+    --al-space-6: 24px;
+    --al-space-7: 32px;
+    --al-space-8: 40px;
+
+
+    /* ---------- Motion ---------- */
+
+    --al-transition-fast:
+        150ms cubic-bezier(.4, 0, .2, 1);
+
+    --al-transition:
+        220ms cubic-bezier(.4, 0, .2, 1);
+
+    --al-transition-slow:
+        320ms cubic-bezier(.4, 0, .2, 1);
+
+
+    /* ---------- Typography ---------- */
+
+    --al-font:
+        "Inter",
+        "Noto Sans Thai",
+        "Segoe UI",
+        Tahoma,
+        Arial,
+        sans-serif;
+
+    --al-font-mono:
+        "JetBrains Mono",
+        "Cascadia Code",
+        Consolas,
+        monospace;
+
+
+    /* ---------- GLOBAL LAYOUT ---------- */
+
+    /*
+     * Sidebar ในภาพจริงกว้างประมาณ 308px
+     * ใช้ค่าเดียวกันทั้งระบบเพื่อป้องกัน Main โดนบัง
+     */
+    --al-sidebar-width: 260px;
+    --al-sidebar-collapsed: 82px;
+
+    /*
+     * Header ใน Screenshot สูงประมาณ 88px
+     */
+    --al-header-height: 72px;
+
+    --al-content-max-width: 1800px;
+
+    /*
+     * Layer System
+     */
+    --al-z-content: 1;
+    --al-z-sidebar: 1000;
+    --al-z-header: 1100;
+    --al-z-overlay: 1200;
+    --al-z-dropdown: 1300;
+    --al-z-modal: 1400;
+    --al-z-toast: 1500;
+}
+
+
+/* =========================================================
+   02. RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    min-height: 100%;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+
+    font-family: var(--al-font);
+
+    font-size: 14px;
+    line-height: 1.6;
+
+    color: var(--al-text);
+
+    background: var(--al-body-bg);
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    overflow-x: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: var(--al-secondary);
+    text-decoration: none;
+
+    transition:
+        color var(--al-transition-fast);
+}
+
+a:hover {
+    color: var(--al-primary);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+::selection {
+    background: var(--al-accent);
+    color: var(--al-primary);
+}
+
+
+/* =========================================================
+   03. SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #CBD5DC;
+    border-radius: var(--al-radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #AEBBC5;
+}
+
+
+/* =========================================================
+   04. GLOBAL APP SHELL
+   ========================================================= */
+
+/*
+ * SINGLE SOURCE OF TRUTH — GLOBAL SHELL
+ *
+ * Sidebar  : fixed 260px
+ * Topbar   : fixed 72px
+ * Main     : offset by Sidebar
+ * Content  : offset by Topbar through .al-main
+ *
+ * IMPORTANT:
+ * .al-page-header is also used by page content as a normal
+ * page heading. Therefore the fixed topbar rules MUST be
+ * scoped to the direct child of .al-main-wrapper only.
+ */
+
+.al-app {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: var(--al-body-bg);
+}
+
+/* ---------- Main wrapper ---------- */
+
+.al-main-wrapper {
+    position: relative;
+
+    width: calc(100% - var(--al-sidebar-width));
+    min-height: 100vh;
+
+    margin-left: var(--al-sidebar-width);
+
+    background: var(--al-body-bg);
+
+    transition:
+        margin-left var(--al-transition),
+        width var(--al-transition);
+}
+
+/* ---------- Sidebar ---------- */
+
+.al-sidebar,
+.app-sidebar,
+.sidebar,
+#sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: var(--al-sidebar-width);
+    min-width: var(--al-sidebar-width);
+    height: 100vh;
+
+    z-index: var(--al-z-sidebar);
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    transition:
+        width var(--al-transition),
+        min-width var(--al-transition),
+        transform var(--al-transition);
+
+    scrollbar-width: thin;
+}
+
+/* ---------- Topbar / Header ----------
+ *
+ * Only the header that is directly inside .al-main-wrapper
+ * is treated as the fixed global header.
+ */
+.al-main-wrapper > .al-page-header,
+.al-main-wrapper > .al-header,
+.al-main-wrapper > .app-header,
+.al-main-wrapper > .main-header,
+.al-main-wrapper > .top-header,
+.al-main-wrapper > .topbar {
+    position: fixed;
+
+    top: 0;
+    right: 0;
+    left: var(--al-sidebar-width);
+
+    width: auto;
+    height: var(--al-header-height);
+
+    z-index: var(--al-z-header);
+
+    transition:
+        left var(--al-transition),
+        width var(--al-transition);
+}
+
+/*
+ * Header is already inside Main Wrapper.
+ * Do not add another horizontal offset here.
+ */
+.al-main-wrapper > .al-page-header {
+    margin-bottom: 0;
+}
+
+/* ---------- Main ---------- */
+
+.al-main {
+    width: 100%;
+    min-height: 100vh;
+
+    /*
+     * The header occupies this space.
+     * This is the ONLY vertical header offset.
+     */
+    padding-top: var(--al-header-height);
+}
+
+/* ---------- Content ----------
+ *
+ * IMPORTANT:
+ * Do NOT add header-height here.
+ * .al-main already reserves the header space.
+ */
+.al-content {
+    position: relative;
+
+    width: 100%;
+    min-height: calc(100vh - var(--al-header-height));
+
+    padding: 28px;
+
+    z-index: var(--al-z-content);
+
+    overflow-x: hidden;
+}
+
+/* If a page explicitly uses a no-fixed-header shell. */
+.al-main-wrapper.no-fixed-header .al-main {
+    padding-top: 0;
+}
+
+.al-main-wrapper.no-fixed-header .al-content {
+    min-height: 100vh;
+    padding-top: 28px;
+}
+
+/* ---------- Inner content ---------- */
+
+.al-content-inner {
+    width: 100%;
+    max-width: var(--al-content-max-width);
+
+    margin: 0 auto;
+}
+
+/* =========================================================
+   04.1 SIDEBAR STATES
+   ========================================================= */
+
+.al-app.sidebar-collapsed .al-main-wrapper,
+.al-app.is-sidebar-collapsed .al-main-wrapper,
+body.sidebar-collapsed .al-main-wrapper {
+    width: calc(100% - var(--al-sidebar-collapsed));
+    margin-left: var(--al-sidebar-collapsed);
+}
+
+.al-app.sidebar-collapsed .al-sidebar,
+.al-app.is-sidebar-collapsed .al-sidebar,
+body.sidebar-collapsed .al-sidebar {
+    width: var(--al-sidebar-collapsed);
+    min-width: var(--al-sidebar-collapsed);
+}
+
+.al-app.sidebar-collapsed .al-main-wrapper > .al-page-header,
+.al-app.sidebar-collapsed .al-main-wrapper > .al-header,
+.al-app.sidebar-collapsed .al-main-wrapper > .app-header,
+.al-app.sidebar-collapsed .al-main-wrapper > .main-header,
+.al-app.sidebar-collapsed .al-main-wrapper > .top-header,
+.al-app.sidebar-collapsed .al-main-wrapper > .topbar,
+.al-app.is-sidebar-collapsed .al-main-wrapper > .al-page-header,
+.al-app.is-sidebar-collapsed .al-main-wrapper > .al-header,
+.al-app.is-sidebar-collapsed .al-main-wrapper > .app-header,
+.al-app.is-sidebar-collapsed .al-main-wrapper > .main-header,
+.al-app.is-sidebar-collapsed .al-main-wrapper > .top-header,
+.al-app.is-sidebar-collapsed .al-main-wrapper > .topbar,
+body.sidebar-collapsed .al-main-wrapper > .al-page-header,
+body.sidebar-collapsed .al-main-wrapper > .al-header,
+body.sidebar-collapsed .al-main-wrapper > .app-header,
+body.sidebar-collapsed .al-main-wrapper > .main-header,
+body.sidebar-collapsed .al-main-wrapper > .top-header,
+body.sidebar-collapsed .al-main-wrapper > .topbar {
+    left: var(--al-sidebar-collapsed);
+}
+
+/* ---------- Alternative collapsed classes ---------- */
+
+.al-sidebar.collapsed,
+.app-sidebar.collapsed,
+.sidebar.collapsed {
+    width: var(--al-sidebar-collapsed);
+    min-width: var(--al-sidebar-collapsed);
+}
+
+.al-main-wrapper.sidebar-collapsed {
+    width: calc(100% - var(--al-sidebar-collapsed));
+    margin-left: var(--al-sidebar-collapsed);
+}
+
+/* =========================================================
+   04.2 SIDEBAR SCROLL AREA
+   ========================================================= */
+
+.al-sidebar::-webkit-scrollbar,
+.app-sidebar::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.al-sidebar::-webkit-scrollbar-track,
+.app-sidebar::-webkit-scrollbar-track,
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.al-sidebar::-webkit-scrollbar-thumb,
+.app-sidebar::-webkit-scrollbar-thumb,
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,.18);
+    border-radius: 999px;
+}
+
+/* =========================================================
+   04.3 MOBILE OVERLAY
+   ========================================================= */
+
+.al-sidebar-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(20, 32, 43, .38);
+
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    z-index: calc(var(--al-z-sidebar) - 1);
+
+    transition:
+        opacity var(--al-transition),
+        visibility var(--al-transition);
+}
+
+.al-sidebar-overlay.is-visible,
+.al-sidebar-overlay.active,
+body.sidebar-open .al-sidebar-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* =========================================================
+   05. MAIN CONTENT
+   ========================================================= */
+
+.al-page {
+    width: 100%;
+    min-width: 0;
+}
+
+.al-section {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.al-content > * {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   06. PAGE HEADER
+   ========================================================= */
+
+.al-page-header {
+    margin-bottom: 24px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.al-page-header-copy {
+    min-width: 0;
+}
+
+.al-page-header-eyebrow {
+    margin-bottom: 5px;
+
+    color: var(--al-secondary);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.al-page-header-title {
+    margin: 0;
+
+    color: var(--al-primary);
+
+    font-size: clamp(22px, 2vw, 30px);
+    font-weight: 750;
+
+    line-height: 1.2;
+
+    letter-spacing: -.02em;
+}
+
+.al-page-header-description {
+    margin: 7px 0 0;
+
+    max-width: 720px;
+
+    color: var(--al-text-muted);
+
+    font-size: 13px;
+}
+
+.al-page-header-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   07. CARDS
+   ========================================================= */
+
+.al-card {
+    position: relative;
+
+    background: var(--al-surface);
+
+    border: 1px solid var(--al-border);
+
+    border-radius: var(--al-radius-lg);
+
+    box-shadow: var(--al-shadow-xs);
+
+    overflow: hidden;
+
+    transition:
+        border-color var(--al-transition),
+        box-shadow var(--al-transition),
+        transform var(--al-transition);
+}
+
+.al-card:hover {
+    border-color: var(--al-border-dark);
+
+    box-shadow: var(--al-shadow-sm);
+}
+
+.al-card-header {
+    min-height: 62px;
+
+    padding: 15px 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    border-bottom: 1px solid var(--al-border-light);
+}
+
+.al-card-title {
+    margin: 0;
+
+    color: var(--al-primary);
+
+    font-size: 14px;
+    font-weight: 750;
+}
+
+.al-card-subtitle {
+    margin: 3px 0 0;
+
+    color: var(--al-text-muted);
+
+    font-size: 11px;
+}
+
+.al-card-body {
+    padding: 20px;
+}
+
+.al-card-footer {
+    padding: 13px 18px;
+
+    background: var(--al-surface-soft);
+
+    border-top: 1px solid var(--al-border-light);
+}
+
+
+/* =========================================================
+   08. BUTTONS
+   ========================================================= */
+
+.al-btn {
+    min-height: 40px;
+
+    padding: 8px 15px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    border: 1px solid transparent;
+
+    border-radius: var(--al-radius-md);
+
+    font-size: 12px;
+    font-weight: 650;
+
+    line-height: 1;
+
+    text-decoration: none;
+
+    transition:
+        background var(--al-transition-fast),
+        border-color var(--al-transition-fast),
+        color var(--al-transition-fast),
+        box-shadow var(--al-transition-fast),
+        transform var(--al-transition-fast);
+}
+
+.al-btn:hover {
+    transform: translateY(-1px);
+}
+
+.al-btn:active {
+    transform: translateY(0);
+}
+
+.al-btn:focus-visible {
+    outline: none;
+
+    box-shadow:
+        0 0 0 3px rgba(86, 124, 141, .18);
+}
+
+
+/* Primary */
+
+.al-btn-primary {
+    background: var(--al-primary);
+    border-color: var(--al-primary);
+
+    color: #FFFFFF;
+}
+
+.al-btn-primary:hover {
+    background: var(--al-primary-hover);
+    border-color: var(--al-primary-hover);
+
+    color: #FFFFFF;
+
+    box-shadow:
+        0 5px 14px rgba(47, 65, 86, .16);
+}
+
+
+/* Secondary */
+
+.al-btn-secondary {
+    background: var(--al-secondary);
+    border-color: var(--al-secondary);
+
+    color: #FFFFFF;
+}
+
+.al-btn-secondary:hover {
+    background: var(--al-secondary-hover);
+    border-color: var(--al-secondary-hover);
+
+    color: #FFFFFF;
+}
+
+
+/* Light */
+
+.al-btn-light {
+    background: var(--al-surface);
+    border-color: var(--al-border);
+
+    color: var(--al-text);
+}
+
+.al-btn-light:hover {
+    background: var(--al-surface-soft);
+    border-color: var(--al-border-dark);
+
+    color: var(--al-primary);
+}
+
+
+/* Success */
+
+.al-btn-success {
+    background: var(--al-success);
+    border-color: var(--al-success);
+
+    color: #FFFFFF;
+}
+
+
+/* Warning */
+
+.al-btn-warning {
+    background: var(--al-warning);
+    border-color: var(--al-warning);
+
+    color: #FFFFFF;
+}
+
+
+/* Danger */
+
+.al-btn-danger {
+    background: var(--al-danger);
+    border-color: var(--al-danger);
+
+    color: #FFFFFF;
+}
+
+
+/* Ghost */
+
+.al-btn-ghost {
+    background: transparent;
+    border-color: transparent;
+
+    color: var(--al-secondary);
+}
+
+.al-btn-ghost:hover {
+    background: var(--al-secondary-soft);
+
+    color: var(--al-primary);
+}
+
+
+/* Icon */
+
+.al-btn-icon {
+    width: 40px;
+    min-width: 40px;
+
+    padding: 0;
+}
+
+
+/* Small */
+
+.al-btn-sm {
+    min-height: 34px;
+
+    padding: 6px 11px;
+
+    border-radius: 9px;
+
+    font-size: 11px;
+}
+
+
+/* Large */
+
+.al-btn-lg {
+    min-height: 46px;
+
+    padding: 10px 19px;
+
+    font-size: 13px;
+}
+
+
+/* Disabled */
+
+.al-btn:disabled,
+.al-btn.disabled {
+    opacity: .55;
+
+    cursor: not-allowed;
+
+    transform: none !important;
+
+    box-shadow: none !important;
+}
+
+
+/* =========================================================
+   09. FORM CONTROLS
+   ========================================================= */
+
+.al-form-group {
+    margin-bottom: 17px;
+}
+
+.al-form-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--al-primary);
+
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.al-form-label .required {
+    color: var(--al-danger);
+}
+
+.al-form-help {
+    margin-top: 5px;
+
+    color: var(--al-text-muted);
+
+    font-size: 10px;
+}
+
+.al-form-control,
+.al-form-select {
+    width: 100%;
+
+    min-height: 42px;
+
+    padding: 9px 12px;
+
+    background: var(--al-white);
+
+    border: 1px solid var(--al-border);
+
+    border-radius: var(--al-radius-md);
+
+    color: var(--al-text);
+
+    font-size: 13px;
+
+    outline: none;
+
+    transition:
+        border-color var(--al-transition-fast),
+        box-shadow var(--al-transition-fast),
+        background var(--al-transition-fast);
+}
+
+.al-form-control::placeholder {
+    color: #A9B4BD;
+}
+
+.al-form-control:hover,
+.al-form-select:hover {
+    border-color: var(--al-border-dark);
+}
+
+.al-form-control:focus,
+.al-form-select:focus {
+    border-color: var(--al-secondary);
+
+    background: #FFFFFF;
+
+    box-shadow:
+        0 0 0 3px rgba(86, 124, 141, .11);
+}
+
+.al-form-control:disabled,
+.al-form-select:disabled {
+    background: var(--al-surface-muted);
+
+    color: var(--al-text-light);
+
+    cursor: not-allowed;
+}
+
+textarea.al-form-control {
+    min-height: 110px;
+
+    resize: vertical;
+}
+
+
+/* Input Group */
+
+.al-input-group {
+    display: flex;
+    align-items: stretch;
+}
+
+.al-input-group .al-form-control {
+    border-radius: 0;
+}
+
+.al-input-group .al-form-control:first-child {
+    border-radius: var(--al-radius-md) 0 0 var(--al-radius-md);
+}
+
+.al-input-group .al-btn {
+    border-radius: 0 var(--al-radius-md) var(--al-radius-md) 0;
+}
+
+
+/* Search */
+
+.al-search-box {
+    position: relative;
+}
+
+.al-search-box > i {
+    position: absolute;
+
+    left: 13px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: var(--al-text-light);
+
+    pointer-events: none;
+}
+
+.al-search-box .al-form-control {
+    padding-left: 38px;
+}
+
+
+/* =========================================================
+   10. CHECKBOX / RADIO
+   ========================================================= */
+
+.al-check {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 8px;
+
+    color: var(--al-text);
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.al-check input {
+    width: 16px;
+    height: 16px;
+
+    accent-color: var(--al-secondary);
+}
+
+
+/* =========================================================
+   11. TABLE
+   ========================================================= */
+
+.al-table-wrapper {
+    width: 100%;
+
+    max-width: 100%;
+
+    overflow-x: auto;
+
+    border: 1px solid var(--al-border);
+
+    border-radius: var(--al-radius-lg);
+
+    background: var(--al-white);
+
+    -webkit-overflow-scrolling: touch;
+}
+
+.al-table {
+    width: 100%;
+
+    margin: 0;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    font-size: 12px;
+}
+
+.al-table thead th {
+    padding: 12px 14px;
+
+    background: var(--al-surface-soft);
+
+    border-bottom: 1px solid var(--al-border);
+
+    color: var(--al-text-secondary);
+
+    font-size: 10px;
+    font-weight: 750;
+
+    letter-spacing: .02em;
+
+    white-space: nowrap;
+}
+
+.al-table tbody td {
+    padding: 13px 14px;
+
+    border-bottom: 1px solid var(--al-border-light);
+
+    color: var(--al-text);
+
+    vertical-align: middle;
+}
+
+.al-table tbody tr {
+    transition:
+        background var(--al-transition-fast);
+}
+
+.al-table tbody tr:hover {
+    background: #FAFCFD;
+}
+
+.al-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.al-table .text-muted {
+    color: var(--al-text-muted) !important;
+}
+
+
+/* =========================================================
+   12. BADGES
+   ========================================================= */
+
+.al-badge {
+    min-height: 25px;
+
+    padding: 4px 9px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    border-radius: var(--al-radius-pill);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.al-badge-primary {
+    background: var(--al-primary-soft);
+    color: var(--al-primary);
+}
+
+.al-badge-secondary {
+    background: var(--al-secondary-soft);
+    color: var(--al-secondary);
+}
+
+.al-badge-success {
+    background: var(--al-success-soft);
+    color: var(--al-success);
+}
+
+.al-badge-warning {
+    background: var(--al-warning-soft);
+    color: var(--al-warning);
+}
+
+.al-badge-danger {
+    background: var(--al-danger-soft);
+    color: var(--al-danger);
+}
+
+.al-badge-info {
+    background: var(--al-info-soft);
+    color: var(--al-info);
+}
+
+.al-badge-neutral {
+    background: var(--al-surface-muted);
+    color: var(--al-text-muted);
+}
+
+
+/* =========================================================
+   13. KPI / METRIC CARD
+   ========================================================= */
+
+.al-kpi {
+    position: relative;
+
+    min-width: 0;
+
+    padding: 20px;
+
+    background: var(--al-white);
+
+    border: 1px solid var(--al-border);
+
+    border-radius: var(--al-radius-lg);
+
+    box-shadow: var(--al-shadow-xs);
+
+    overflow: hidden;
+
+    transition:
+        transform var(--al-transition),
+        box-shadow var(--al-transition),
+        border-color var(--al-transition);
+}
+
+.al-kpi:hover {
+    transform: translateY(-2px);
+
+    border-color: var(--al-border-dark);
+
+    box-shadow: var(--al-shadow-sm);
+}
+
+.al-kpi-label {
+    color: var(--al-text-muted);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: .04em;
+}
+
+.al-kpi-value {
+    margin-top: 7px;
+
+    color: var(--al-primary);
+
+    font-size: 27px;
+    font-weight: 800;
+
+    line-height: 1.1;
+
+    letter-spacing: -.025em;
+}
+
+.al-kpi-meta {
+    margin-top: 7px;
+
+    color: var(--al-text-muted);
+
+    font-size: 10px;
+}
+
+.al-kpi-icon {
+    position: absolute;
+
+    top: 17px;
+    right: 17px;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: var(--al-primary-soft);
+
+    color: var(--al-secondary);
+
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   14. TOOLBAR
+   ========================================================= */
+
+.al-toolbar {
+    padding: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    background: var(--al-white);
+
+    border: 1px solid var(--al-border);
+
+    border-radius: var(--al-radius-lg);
+
+    box-shadow: var(--al-shadow-xs);
+
+    margin-bottom: 18px;
+}
+
+.al-toolbar-left,
+.al-toolbar-right {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   15. DROPDOWN
+   ========================================================= */
+
+.dropdown-menu {
+    padding: 7px;
+
+    border: 1px solid var(--al-border);
+
+    border-radius: var(--al-radius-lg);
+
+    box-shadow: var(--al-shadow-lg);
+
+    z-index: var(--al-z-dropdown);
+}
+
+.dropdown-item {
+    padding: 9px 11px;
+
+    border-radius: 9px;
+
+    color: var(--al-text);
+
+    font-size: 12px;
+
+    transition:
+        background var(--al-transition-fast),
+        color var(--al-transition-fast);
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background: var(--al-surface-soft);
+
+    color: var(--al-primary);
+}
+
+.dropdown-divider {
+    border-color: var(--al-border-light);
+}
+
+
+/* =========================================================
+   16. MODAL
+   ========================================================= */
+
+.modal {
+    z-index: var(--al-z-modal);
+}
+
+.modal-backdrop {
+    z-index: calc(var(--al-z-modal) - 1);
+
+    background: rgba(31, 43, 54, .42);
+}
+
+.modal-content {
+    border: 1px solid var(--al-border);
+
+    border-radius: var(--al-radius-xl);
+
+    box-shadow: var(--al-shadow-lg);
+
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 18px 20px;
+
+    border-bottom: 1px solid var(--al-border-light);
+}
+
+.modal-title {
+    color: var(--al-primary);
+
+    font-size: 16px;
+    font-weight: 750;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    padding: 14px 20px;
+
+    background: var(--al-surface-soft);
+
+    border-top: 1px solid var(--al-border-light);
+}
+
+
+/* =========================================================
+   17. ALERT
+   ========================================================= */
+
+.al-alert {
+    padding: 12px 14px;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 10px;
+
+    border: 1px solid transparent;
+
+    border-radius: var(--al-radius-md);
+
+    font-size: 12px;
+}
+
+.al-alert-success {
+    background: var(--al-success-soft);
+    border-color: #D8EBDD;
+    color: #397355;
+}
+
+.al-alert-warning {
+    background: var(--al-warning-soft);
+    border-color: #F0DFC4;
+    color: #91652E;
+}
+
+.al-alert-danger {
+    background: var(--al-danger-soft);
+    border-color: #EFD4D4;
+    color: #974848;
+}
+
+.al-alert-info {
+    background: var(--al-info-soft);
+    border-color: #D6E7EF;
+    color: #426E84;
+}
+
+
+/* =========================================================
+   18. EMPTY STATE
+   ========================================================= */
+
+.al-empty-state {
+    padding: 55px 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    color: var(--al-text-muted);
+}
+
+.al-empty-state-icon {
+    width: 58px;
+    height: 58px;
+
+    margin-bottom: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 17px;
+
+    background: var(--al-primary-soft);
+
+    color: var(--al-secondary);
+
+    font-size: 24px;
+}
+
+.al-empty-state-title {
+    margin: 0;
+
+    color: var(--al-primary);
+
+    font-size: 14px;
+    font-weight: 750;
+}
+
+.al-empty-state-text {
+    max-width: 430px;
+
+    margin: 6px 0 0;
+
+    color: var(--al-text-muted);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   19. LOADING
+   ========================================================= */
+
+.al-loading {
+    position: relative;
+
+    pointer-events: none;
+}
+
+.al-loading::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(255,255,255,.68);
+
+    backdrop-filter: blur(1px);
+
+    z-index: 20;
+}
+
+.al-spinner {
+    width: 18px;
+    height: 18px;
+
+    display: inline-block;
+
+    border: 2px solid rgba(86,124,141,.22);
+
+    border-top-color: var(--al-secondary);
+
+    border-radius: 50%;
+
+    animation:
+        al-spin .7s linear infinite;
+}
+
+@keyframes al-spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   20. SKELETON
+   ========================================================= */
+
+.al-skeleton {
+    position: relative;
+
+    overflow: hidden;
+
+    background: #EAF0F3;
+
+    border-radius: 7px;
+}
+
+.al-skeleton::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    transform: translateX(-100%);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.55),
+            transparent
+        );
+
+    animation:
+        al-skeleton 1.3s infinite;
+}
+
+@keyframes al-skeleton {
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+
+/* =========================================================
+   21. PROGRESS
+   ========================================================= */
+
+.al-progress {
+    width: 100%;
+    height: 7px;
+
+    overflow: hidden;
+
+    background: var(--al-surface-muted);
+
+    border-radius: var(--al-radius-pill);
+}
+
+.al-progress-bar {
+    height: 100%;
+
+    background: var(--al-secondary);
+
+    border-radius: inherit;
+
+    transition:
+        width .45s ease;
+}
+
+
+/* =========================================================
+   22. DIVIDER
+   ========================================================= */
+
+.al-divider {
+    width: 100%;
+    height: 1px;
+
+    margin: 18px 0;
+
+    background: var(--al-border-light);
+}
+
+
+/* =========================================================
+   23. ICON BOX
+   ========================================================= */
+
+.al-icon-box {
+    width: 42px;
+    height: 42px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 42px;
+
+    border-radius: 12px;
+
+    background: var(--al-primary-soft);
+
+    color: var(--al-secondary);
+
+    font-size: 17px;
+}
+
+.al-icon-box.success {
+    background: var(--al-success-soft);
+    color: var(--al-success);
+}
+
+.al-icon-box.warning {
+    background: var(--al-warning-soft);
+    color: var(--al-warning);
+}
+
+.al-icon-box.danger {
+    background: var(--al-danger-soft);
+    color: var(--al-danger);
+}
+
+
+/* =========================================================
+   24. AVATAR
+   ========================================================= */
+
+.al-avatar {
+    width: 38px;
+    height: 38px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 38px;
+
+    border-radius: 11px;
+
+    background: var(--al-primary);
+
+    color: #FFFFFF;
+
+    font-size: 12px;
+    font-weight: 750;
+}
+
+.al-avatar-sm {
+    width: 30px;
+    height: 30px;
+
+    flex-basis: 30px;
+
+    border-radius: 9px;
+
+    font-size: 10px;
+}
+
+.al-avatar-lg {
+    width: 48px;
+    height: 48px;
+
+    flex-basis: 48px;
+
+    border-radius: 14px;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   25. PAGINATION
+   ========================================================= */
+
+.al-pagination {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    flex-wrap: wrap;
+}
+
+.al-pagination a,
+.al-pagination button,
+.al-pagination span {
+    min-width: 34px;
+    height: 34px;
+
+    padding: 0 9px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--al-border);
+
+    border-radius: 9px;
+
+    background: var(--al-white);
+
+    color: var(--al-text-secondary);
+
+    font-size: 11px;
+
+    text-decoration: none;
+
+    transition:
+        background var(--al-transition-fast),
+        color var(--al-transition-fast),
+        border-color var(--al-transition-fast);
+}
+
+.al-pagination a:hover,
+.al-pagination button:hover {
+    background: var(--al-surface-soft);
+
+    border-color: var(--al-border-dark);
+
+    color: var(--al-primary);
+}
+
+.al-pagination .active {
+    background: var(--al-primary);
+
+    border-color: var(--al-primary);
+
+    color: #FFFFFF;
+}
+
+
+/* =========================================================
+   26. TOOLTIP
+   ========================================================= */
+
+.tooltip {
+    z-index: var(--al-z-dropdown);
+}
+
+.tooltip-inner {
+    padding: 6px 9px;
+
+    border-radius: 7px;
+
+    background: var(--al-primary);
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   27. SWEETALERT2
+   ========================================================= */
+
+.swal2-container {
+    z-index: var(--al-z-toast) !important;
+}
+
+.swal2-popup {
+    border-radius: 20px !important;
+
+    padding: 24px !important;
+
+    font-family: var(--al-font) !important;
+
+    box-shadow:
+        0 20px 60px rgba(47,65,86,.16) !important;
+}
+
+.swal2-title {
+    color: var(--al-primary) !important;
+
+    font-size: 19px !important;
+    font-weight: 750 !important;
+}
+
+.swal2-html-container {
+    color: var(--al-text-muted) !important;
+
+    font-size: 12px !important;
+}
+
+.swal2-confirm {
+    min-height: 40px !important;
+
+    padding: 8px 17px !important;
+
+    border-radius: 10px !important;
+
+    background: var(--al-primary) !important;
+
+    font-family: var(--al-font) !important;
+
+    font-size: 12px !important;
+    font-weight: 650 !important;
+}
+
+.swal2-confirm:hover {
+    background: var(--al-primary-hover) !important;
+}
+
+.swal2-cancel {
+    min-height: 40px !important;
+
+    padding: 8px 17px !important;
+
+    border-radius: 10px !important;
+
+    background: #EEF2F4 !important;
+
+    color: var(--al-text) !important;
+
+    font-family: var(--al-font) !important;
+
+    font-size: 12px !important;
+    font-weight: 650 !important;
+}
+
+.swal2-icon {
+    transform: scale(.88);
+}
+
+
+/* =========================================================
+   28. TOAST
+   ========================================================= */
+
+.al-toast {
+    border: 1px solid var(--al-border) !important;
+
+    border-radius: 13px !important;
+
+    box-shadow: var(--al-shadow-lg) !important;
+
+    font-family: var(--al-font) !important;
+}
+
+
+/* =========================================================
+   29. UTILITY
+   ========================================================= */
+
+.al-text-primary {
+    color: var(--al-primary) !important;
+}
+
+.al-text-secondary {
+    color: var(--al-secondary) !important;
+}
+
+.al-text-muted {
+    color: var(--al-text-muted) !important;
+}
+
+.al-text-success {
+    color: var(--al-success) !important;
+}
+
+.al-text-warning {
+    color: var(--al-warning) !important;
+}
+
+.al-text-danger {
+    color: var(--al-danger) !important;
+}
+
+.al-bg-soft {
+    background: var(--al-surface-soft) !important;
+}
+
+.al-bg-warm {
+    background: var(--al-warm) !important;
+}
+
+.al-border {
+    border-color: var(--al-border) !important;
+}
+
+.al-rounded {
+    border-radius: var(--al-radius-lg) !important;
+}
+
+
+/* =========================================================
+   30. MICRO INTERACTION
+   ========================================================= */
+
+.al-hover-lift {
+    transition:
+        transform var(--al-transition),
+        box-shadow var(--al-transition);
+}
+
+.al-hover-lift:hover {
+    transform: translateY(-2px);
+
+    box-shadow: var(--al-shadow-sm);
+}
+
+.al-fade-in {
+    animation:
+        al-fade-in .28s ease both;
+}
+
+@keyframes al-fade-in {
+
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.al-scale-in {
+    animation:
+        al-scale-in .22s ease both;
+}
+
+@keyframes al-scale-in {
+
+    from {
+        opacity: 0;
+        transform: scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================================================
+   31. FOCUS
+   ========================================================= */
+
+:focus-visible {
+    outline: 2px solid rgba(86,124,141,.45);
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   32. LAYOUT SAFETY
+   ========================================================= */
+
+/*
+ * ป้องกัน Bootstrap row / column
+ * ดันหน้าออกนอก viewport
+ */
+.al-content .row,
+.al-main-wrapper .row {
+    max-width: 100%;
+}
+
+
+/*
+ * Flex child ป้องกัน content ล้น
+ */
+.al-content .col,
+.al-content [class*="col-"] {
+    min-width: 0;
+}
+
+
+/*
+ * รูป / ตาราง / card ไม่ให้ดัน Layout
+ */
+.al-content img,
+.al-content table,
+.al-content .al-card {
+    max-width: 100%;
+}
+
+
+/*
+ * Select2 / Tom Select
+ */
+.ts-wrapper,
+.ts-control {
+    max-width: 100%;
+}
+
+
+/*
+ * Chart
+ */
+.al-content canvas {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   33. RESPONSIVE
+   ========================================================= */
+
+
+/* ---------- Large Desktop ---------- */
+
+@media (max-width: 1400px) {
+
+    .al-content {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+
+/* ---------- Desktop / Laptop ---------- */
+
+@media (max-width: 1200px) {
+
+    .al-content {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 991.98px) {
+
+    :root {
+        --al-header-height: 72px;
+    }
+
+    /*
+     * Mobile:
+     * Sidebar leaves the document flow completely.
+     * Main becomes full width.
+     */
+    .al-main-wrapper {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .al-main-wrapper > .al-page-header,
+    .al-main-wrapper > .al-header,
+    .al-main-wrapper > .app-header,
+    .al-main-wrapper > .main-header,
+    .al-main-wrapper > .top-header,
+    .al-main-wrapper > .topbar {
+        left: 0;
+        width: 100%;
+    }
+
+    .al-sidebar,
+    .app-sidebar,
+    .sidebar,
+    #sidebar {
+        transform: translateX(-105%);
+
+        box-shadow:
+            15px 0 45px rgba(31, 43, 54, .15);
+    }
+
+    body.sidebar-open .al-sidebar,
+    body.sidebar-open .app-sidebar,
+    body.sidebar-open .sidebar,
+    body.sidebar-open #sidebar,
+
+    .al-sidebar.is-open,
+    .app-sidebar.is-open,
+    .sidebar.is-open {
+        transform: translateX(0);
+    }
+
+    .al-main {
+        padding-top: var(--al-header-height);
+    }
+
+    .al-content {
+        padding:
+            24px
+            20px
+            20px;
+    }
+
+    /*
+     * This remains a NORMAL page heading.
+     * It must never become fixed.
+     */
+    .al-content .al-page-header {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        width: auto;
+        height: auto;
+    }
+
+    .al-page-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .al-page-header-actions {
+        width: 100%;
+    }
+}
+
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 640px) {
+
+    :root {
+        --al-header-height: 68px;
+    }
+
+    body {
+        font-size: 13px;
+    }
+
+
+    .al-content {
+        padding:
+            calc(var(--al-header-height) + 15px)
+            15px
+            15px;
+    }
+
+
+    .al-page-header {
+        margin-bottom: 18px;
+    }
+
+    .al-page-header-title {
+        font-size: 21px;
+    }
+
+    .al-page-header-description {
+        font-size: 12px;
+    }
+
+
+    .al-page-header-actions {
+        display: grid;
+
+        grid-template-columns: repeat(
+            auto-fit,
+            minmax(120px, 1fr)
+        );
+
+        width: 100%;
+    }
+
+
+    .al-page-header-actions .al-btn {
+        width: 100%;
+    }
+
+
+    .al-card-header {
+        padding: 13px 14px;
+
+        align-items: flex-start;
+    }
+
+    .al-card-body {
+        padding: 15px;
+    }
+
+
+    .al-toolbar {
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+    .al-toolbar-left,
+    .al-toolbar-right {
+        width: 100%;
+    }
+
+    .al-toolbar .al-btn {
+        flex: 1;
+    }
+
+
+    .al-kpi {
+        padding: 17px;
+    }
+
+    .al-kpi-value {
+        font-size: 23px;
+    }
+
+
+    .al-table {
+        min-width: 700px;
+    }
+
+
+    .al-table-wrapper {
+        border-radius: 12px;
+    }
+
+
+    .modal-dialog {
+        margin: 10px;
+    }
+
+    .modal-content {
+        border-radius: 16px;
+    }
+}
+
+
+/* =========================================================
+   34. VERY SMALL SCREEN
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .al-content {
+        padding-left: 11px;
+        padding-right: 11px;
+    }
+
+    .al-card {
+        border-radius: 13px;
+    }
+
+    .al-card-body {
+        padding: 13px;
+    }
+
+    .al-kpi {
+        border-radius: 13px;
+    }
+
+    .al-btn {
+        min-height: 38px;
+    }
+}
+
+
+/* =========================================================
+   35. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        scroll-behavior: auto !important;
+
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+
+        transition-duration: .01ms !important;
+    }
+}

@@ -1,0 +1,412 @@
+/* =========================================================
+   AL INVENTORY SYSTEM
+   FORMS.CSS
+   ========================================================= */
+
+:root {
+    --al-primary: #2F4156;
+    --al-secondary: #567C8D;
+    --al-accent: #C8D9E6;
+    --al-warm: #F5EFEB;
+    --al-border: #DCE4EA;
+    --al-border-light: #EDF1F4;
+    --al-text: #263746;
+    --al-muted: #718096;
+    --al-danger: #B94A48;
+    --al-success: #3F7D5A;
+}
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
+
+.al-form-group {
+    margin-bottom: 18px;
+}
+
+.al-form-label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--al-primary);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.al-form-label .required {
+    color: var(--al-danger);
+    margin-left: 2px;
+}
+
+.al-form-help {
+    display: block;
+    margin-top: 6px;
+    color: var(--al-muted);
+    font-size: 11px;
+}
+
+/* =========================================================
+   INPUT / SELECT / TEXTAREA
+   ========================================================= */
+
+.form-control,
+.form-select {
+    min-height: 42px;
+    border: 1px solid var(--al-border);
+    border-radius: 10px;
+    color: var(--al-text);
+    background-color: #fff;
+    font-size: 13px;
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease,
+        background-color .2s ease;
+}
+
+.form-control {
+    padding: 9px 12px;
+}
+
+.form-select {
+    padding: 9px 36px 9px 12px;
+}
+
+textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-control:hover,
+.form-select:hover {
+    border-color: #C5D1D9;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--al-secondary);
+    box-shadow: 0 0 0 3px rgba(86, 124, 141, .12);
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: #A0AEC0;
+}
+
+.form-control:disabled,
+.form-control[readonly],
+.form-select:disabled {
+    background-color: #F5F7F9;
+    color: #8A97A4;
+    cursor: not-allowed;
+}
+
+/* =========================================================
+   INPUT GROUP
+   ========================================================= */
+
+.input-group-text {
+    border-color: var(--al-border);
+    background: #F8FAFB;
+    color: var(--al-muted);
+    font-size: 12px;
+}
+
+.input-group > .form-control:focus,
+.input-group > .form-select:focus {
+    z-index: 2;
+}
+
+/* =========================================================
+   PASSWORD
+   ========================================================= */
+
+.al-password {
+    position: relative;
+}
+
+.al-password .form-control {
+    padding-right: 44px;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 9px;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%);
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--al-muted);
+    cursor: pointer;
+}
+
+.password-toggle:hover {
+    background: var(--al-warm);
+    color: var(--al-primary);
+}
+
+/* =========================================================
+   CHECKBOX / RADIO
+   ========================================================= */
+
+.form-check {
+    margin-bottom: 8px;
+}
+
+.form-check-input {
+    border-color: #C9D3DB;
+    cursor: pointer;
+}
+
+.form-check-input:checked {
+    border-color: var(--al-primary);
+    background-color: var(--al-primary);
+}
+
+.form-check-input:focus {
+    border-color: var(--al-secondary);
+    box-shadow: 0 0 0 3px rgba(86, 124, 141, .10);
+}
+
+.form-check-label {
+    color: var(--al-text);
+    font-size: 13px;
+    cursor: pointer;
+}
+
+/* =========================================================
+   SWITCH
+   ========================================================= */
+
+.form-switch .form-check-input {
+    width: 2.4em;
+}
+
+.form-switch .form-check-input:checked {
+    background-color: var(--al-secondary);
+    border-color: var(--al-secondary);
+}
+
+/* =========================================================
+   VALIDATION
+   ========================================================= */
+
+.form-control.is-valid,
+.form-select.is-valid {
+    border-color: var(--al-success);
+}
+
+.form-control.is-invalid,
+.form-select.is-invalid {
+    border-color: var(--al-danger);
+}
+
+.valid-feedback,
+.invalid-feedback {
+    font-size: 11px;
+}
+
+.invalid-feedback {
+    color: var(--al-danger);
+}
+
+/* =========================================================
+   SEARCH FIELD
+   ========================================================= */
+
+.al-form-search {
+    position: relative;
+}
+
+.al-form-search > i {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 13px;
+    transform: translateY(-50%);
+    color: #9AA8B4;
+    pointer-events: none;
+}
+
+.al-form-search > .form-control {
+    padding-left: 38px;
+}
+
+/* =========================================================
+   FILE INPUT
+   ========================================================= */
+
+.form-control[type="file"] {
+    padding: 7px 10px;
+    cursor: pointer;
+}
+
+.form-control[type="file"]::file-selector-button {
+    margin-right: 10px;
+    padding: 6px 10px;
+    border: 0;
+    border-radius: 7px;
+    background: var(--al-accent);
+    color: var(--al-primary);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.btn {
+    min-height: 40px;
+    border-radius: 9px;
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        background-color .18s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background: var(--al-primary);
+    border-color: var(--al-primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: #243447;
+    border-color: #243447;
+}
+
+.btn-secondary {
+    background: var(--al-secondary);
+    border-color: var(--al-secondary);
+}
+
+.btn-light {
+    background: #F7F9FA;
+    border-color: var(--al-border);
+    color: var(--al-primary);
+}
+
+.btn-success {
+    background: var(--al-success);
+    border-color: var(--al-success);
+}
+
+.btn-warning {
+    color: #fff;
+    background: #B7791F;
+    border-color: #B7791F;
+}
+
+.btn-danger {
+    background: var(--al-danger);
+    border-color: var(--al-danger);
+}
+
+.btn-outline-primary {
+    border-color: var(--al-primary);
+    color: var(--al-primary);
+}
+
+.btn-outline-primary:hover {
+    background: var(--al-primary);
+    border-color: var(--al-primary);
+}
+
+.btn-outline-secondary {
+    border-color: var(--al-secondary);
+    color: var(--al-secondary);
+}
+
+.btn-outline-secondary:hover {
+    background: var(--al-secondary);
+    border-color: var(--al-secondary);
+}
+
+/* =========================================================
+   FORM ACTIONS
+   ========================================================= */
+
+.al-form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    padding-top: 18px;
+    margin-top: 18px;
+    border-top: 1px solid var(--al-border-light);
+}
+
+.al-form-actions.left {
+    justify-content: flex-start;
+}
+
+.al-form-actions.between {
+    justify-content: space-between;
+}
+
+/* =========================================================
+   FORM SECTION
+   ========================================================= */
+
+.al-form-section {
+    padding: 20px;
+    border: 1px solid var(--al-border);
+    border-radius: 14px;
+    background: #fff;
+}
+
+.al-form-section + .al-form-section {
+    margin-top: 18px;
+}
+
+.al-form-section-title {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 18px;
+    color: var(--al-primary);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.al-form-section-title i {
+    color: var(--al-secondary);
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+
+    .al-form-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .al-form-actions .btn {
+        width: 100%;
+    }
+
+    .form-control,
+    .form-select {
+        min-height: 44px;
+    }
+}
